@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashierReceiptsConsole", "CashierReceipts\CashierReceiptsConsole.csproj", "{AD721120-9A58-49D2-AB27-9A54332634DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashierReceiptsLib", "CashierReceiptsLib\CashierReceiptsLib.csproj", "{07882CD9-8A21-4530-92AA-5717E7FDE3CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WritingTemplate", "WritingTemplate\WritingTemplate.csproj", "{860EBD94-F514-4580-A69A-D69DFD551828}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashierReceiptsConsoleTests", "CashierReceiptsConsoleTests\CashierReceiptsConsoleTests.csproj", "{1212B920-69D6-4747-B125-D8870E61441A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD721120-9A58-49D2-AB27-9A54332634DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD721120-9A58-49D2-AB27-9A54332634DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD721120-9A58-49D2-AB27-9A54332634DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD721120-9A58-49D2-AB27-9A54332634DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07882CD9-8A21-4530-92AA-5717E7FDE3CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07882CD9-8A21-4530-92AA-5717E7FDE3CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07882CD9-8A21-4530-92AA-5717E7FDE3CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07882CD9-8A21-4530-92AA-5717E7FDE3CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{860EBD94-F514-4580-A69A-D69DFD551828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{860EBD94-F514-4580-A69A-D69DFD551828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{860EBD94-F514-4580-A69A-D69DFD551828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{860EBD94-F514-4580-A69A-D69DFD551828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1212B920-69D6-4747-B125-D8870E61441A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1212B920-69D6-4747-B125-D8870E61441A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1212B920-69D6-4747-B125-D8870E61441A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1212B920-69D6-4747-B125-D8870E61441A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
