@@ -21,9 +21,9 @@ namespace CashierReceiptsLib.Model
             Unit = unit;
         }
 
-        public Product(string barcode)
+        public Product()
         {
-            
+
         }
     }
 }

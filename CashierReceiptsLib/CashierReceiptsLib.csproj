@@ -40,9 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PromoteActivity\PromoteActivity.cs" />
-    <Compile Include="PromoteActivity\DiscountPromoteActivity.cs" />
-    <Compile Include="PromoteActivity\ExtraPromoteActivity.cs" />
+    <Compile Include="Activity\NoPromoteActivity.cs" />
+    <Compile Include="Activity\PromoteActivity.cs" />
+    <Compile Include="Activity\DiscountPromoteActivity.cs" />
+    <Compile Include="Activity\ExtraPromoteActivity.cs" />
     <Compile Include="Model\Product.cs" />
     <Compile Include="PromoteAlgorithm\DiscountAlgorithm.cs" />
     <Compile Include="PromoteAlgorithm\ExtraAlgorithm.cs" />

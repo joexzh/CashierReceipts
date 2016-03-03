@@ -11,29 +11,56 @@ namespace CashierReceiptsConsole.Tests
     [TestClass()]
     public class FileOpsTests
     {
+        FileOps fileOps;
+
+        [TestInitialize]
+        public void Initial()
+        {
+            var appPath = @"E:\Joe\git\github\CashierReceipts\CashierReceipts\data\";
+            fileOps = new FileOps(appPath);
+        }
+
         [TestMethod()]
         public void GetProductsTest()
         {
-            var barcodes = FileOps.PromoteBarcodes;
-            Assert.AreEqual(true, barcodes.Count>0);
+
+            var products = fileOps.Products;
+            Assert.AreEqual(true, products.Count > 0);
         }
 
         [TestMethod()]
         public void GetPromoteBarcodesTest()
         {
-            Assert.Fail();
+            var barcodes = fileOps.PromoteBarcodes;
+            Assert.AreEqual(true, barcodes.Count > 0);
         }
 
         [TestMethod()]
         public void GetOrderedPromoteTypesTest()
         {
-            Assert.Fail();
+            var orderedPromoteTypes = fileOps.GetOrderedPromoteTypes();
+            Assert.AreEqual(true, orderedPromoteTypes.Count > 0);
         }
 
         [TestMethod()]
         public void ProductCountTest()
         {
-            Assert.Fail();
+            var productCount = fileOps.ProductCount();
+            Assert.AreEqual(true, productCount.Count > 0);
+        }
+
+        [TestMethod()]
+        public void GetPromoteDetailsTest_Buy2Return1()
+        {
+            var promoteDetails = fileOps.GetPromoteDetails("买二赠一");
+            Assert.AreEqual(true, promoteDetails.Item1.Count > 0);
+        }
+
+        [TestMethod()]
+        public void GetPromoteDetailsTest_95Discount()
+        {
+            var promoteDetails = fileOps.GetPromoteDetails("95折");
+            Assert.AreEqual(true, promoteDetails.Item1.Count > 0);
         }
     }
 }

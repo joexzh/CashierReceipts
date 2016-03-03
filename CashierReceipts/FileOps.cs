@@ -12,54 +12,61 @@ namespace CashierReceiptsConsole
 {
     public class FileOps
     {
-        static readonly string productsFile = $@"{AppDomain.CurrentDomain.BaseDirectory}\data\products.json";
-        static readonly string promoteFile = $@"{AppDomain.CurrentDomain.BaseDirectory}\data\promote.json";
-        static readonly string inputFile = $@"{AppDomain.CurrentDomain.BaseDirectory}\data\input.json";
+        private readonly string productsFile;
+        private readonly string promoteFile;
+        private readonly string inputFile;
 
-        static List<Product> products;
-        static Dictionary<string, Tuple<List<string>, int>> promoteBarcodes;
+        private List<Product> products;
+        private Dictionary<string, Tuple<List<string>, int>> promoteBarcodes;
 
-        public static Dictionary<string, Tuple<List<string>, int>> PromoteBarcodes
+        public Dictionary<string, Tuple<List<string>, int>> PromoteBarcodes
         {
             get
             {
                 if (promoteBarcodes == null)
                 {
                     string json = File.ReadAllText(promoteFile);
-                    return JsonConvert.DeserializeObject<Dictionary<string, Tuple<List<string>, int>>>(json);
+                    promoteBarcodes =  JsonConvert.DeserializeObject<Dictionary<string, Tuple<List<string>, int>>>(json);
                 }
-                return PromoteBarcodes;
+                return promoteBarcodes;
             }
         }
 
         /// <summary>
         /// All products
         /// </summary>
-        static public List<Product> Products
+        public List<Product> Products
         {
             get
             {
                 if (products == null)
                 {
                     string json = File.ReadAllText(productsFile);
-                    return JsonConvert.DeserializeObject<List<Product>>(json);
+                    products = JsonConvert.DeserializeObject<List<Product>>(json);
                 }
                 return products;
             }
         }
 
+        public FileOps(string fileFolder)
+        {
+            productsFile = Path.Combine(fileFolder, "products.json");
+            promoteFile = Path.Combine(fileFolder, "promote.json");
+            inputFile = Path.Combine(fileFolder, "input.json");
+        }
 
-        public static IEnumerable<Product> GetProducts(Func<Product, bool> prediction)
+
+        public IEnumerable<Product> GetProducts(Func<Product, bool> prediction)
         {
             return Products.Where(p => prediction(p));
         }
 
-        public static Tuple<List<string>, int> GetPromoteDetails(string promoteType)
+        public Tuple<List<string>, int> GetPromoteDetails(string promoteType)
         {
             return PromoteBarcodes[promoteType];
         }
 
-        public static List<string> GetOrderedPromoteTypes()
+        public List<string> GetOrderedPromoteTypes()
         {
             List<string> orderedPromoteTypes = new List<string>();
             var tempDict = new Dictionary<string, int>();
@@ -74,9 +81,9 @@ namespace CashierReceiptsConsole
         /// 从input转换获得商品, 数量
         /// </summary>
         /// <returns></returns>
-        public static List<Tuple<Product, int>> ProductCount()
+        public List<Tuple<Product, int>> ProductCount()
         {
-            var rawList = JsonConvert.DeserializeObject<List<string>>(inputFile);
+            var rawList = JsonConvert.DeserializeObject<List<string>>(File.ReadAllText(inputFile));
             var barcodeCountDict = new Dictionary<string, int>();
             foreach (var rawItem in rawList)
             {
@@ -89,12 +96,12 @@ namespace CashierReceiptsConsole
                     int count;
                     if (int.TryParse(split[1], out count))
                     {
-                        barcodeCountDict[rawItem] += count;
+                        barcodeCountDict[barcode] += count;
                     }
                 }
                 else
                 {
-                    barcodeCountDict[rawItem] += 1;
+                    barcodeCountDict[barcode] += 1;
                 }
             }
 
@@ -103,7 +110,7 @@ namespace CashierReceiptsConsole
             {
                 productCount.Add(
                     new Tuple<Product, int>(
-                        FileOps.GetProducts(x => x.Barcode == barcodeCount.Key).FirstOrDefault(),
+                        GetProducts(x => x.Barcode == barcodeCount.Key).FirstOrDefault(),
                         barcodeCount.Value));
             }
             return productCount;

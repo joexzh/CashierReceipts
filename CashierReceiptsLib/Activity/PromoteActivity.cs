@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashierReceiptsLib.ConcretePromote
+namespace CashierReceiptsLib.Activity
 {
     public abstract class PromoteActivity
     {
@@ -23,7 +23,7 @@ namespace CashierReceiptsLib.ConcretePromote
             Product = product;
 
             TotalPrice = count * product.Price;
-            PromotePrice = PromoteAlgorithm.GetResult(count, product.Price);
+            PromotePrice = PromoteAlgorithm == null ? TotalPrice : PromoteAlgorithm.GetResult(count, product.Price);
             Saved = TotalPrice - PromotePrice;
         }
     }

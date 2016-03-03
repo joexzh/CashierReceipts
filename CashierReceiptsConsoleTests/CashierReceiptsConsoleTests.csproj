@@ -55,6 +55,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CashierReceiptsLib\CashierReceiptsLib.csproj">
+      <Project>{07882cd9-8a21-4530-92aa-5717e7fde3cc}</Project>
+      <Name>CashierReceiptsLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CashierReceipts\CashierReceiptsConsole.csproj">
       <Project>{AD721120-9A58-49D2-AB27-9A54332634DF}</Project>
       <Name>CashierReceiptsConsole</Name>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CashierReceiptsLib.ConcretePromote
+namespace CashierReceiptsLib.Activity
 {
     public class ExtraPromoteActivity : PromoteActivity
     {
